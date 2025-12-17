@@ -1,11 +1,13 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 
 @Entity
 public class StudentEntity{
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,19 +19,19 @@ public class StudentEntity{
     public void setName(String name){
         this.name=name;
     }
-    public String getName{
+    public String getName(){
         return this.name;
     }
     public void setEmail(String email){
         this.email=email;
     }
-    public String getEmail{
+    public String getEmail(){
         return this.email;
     }
-    public void setCgpa(String cgpa){
+    public void setCgpa(float cgpa){
         this.cgpa=cgpa;
     }
-    public float getCgpa{
+    public float getCgpa(){
         return this.cgpa;
     }
 
@@ -42,5 +44,5 @@ public class StudentEntity{
     public StudentEntity(){
         //empty
     }
-    
+
 }
