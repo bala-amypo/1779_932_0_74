@@ -5,38 +5,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
-
 @Entity
-public class StudentEntity {
+@Table(name = "students")
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Name is empty")
+    @NotBlank(message = "Name cannot be empty")
     private String name;
 
-    @NotBlank(message = "Email is empty")
-    @Email(message = "Invalid Email Format")
+    @NotBlank(message = "Email cannot be empty")
+    @Email(message = "Invalid email format")
     private String email;
-
-    @Min(value = 0, message = "Age cannot be less than 0")
-    @Max(value = 60, message = "Age cannot be greater than 60")
-    private int age;
-
-    @NotBlank(message = "Password is empty")
-    @Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
-    private String password;
-
-    public StudentEntity() {
-    }
-
-    public StudentEntity(String name, String email, int age, String password) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-        this.password = password;
-    }
 
     public Long getId() {
         return id;
@@ -62,19 +44,17 @@ public class StudentEntity {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
+    public Student(
+            Long id,
+            @NotBlank(message = "Name cannot be empty") String name,
+            @NotBlank(message = "Email cannot be empty")
+            @Email(message = "Invalid email format") String email
+    ) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public Student() {
     }
 }
