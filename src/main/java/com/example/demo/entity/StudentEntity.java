@@ -28,11 +28,9 @@ public class StudentEntity {
     @Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
     private String password;
 
-    // Default constructor (required by JPA)
     public StudentEntity() {
     }
 
-    // Parameterized constructor (NO validation annotations here)
     public StudentEntity(String name, String email, int age, String password) {
         this.name = name;
         this.email = email;
@@ -40,7 +38,6 @@ public class StudentEntity {
         this.password = password;
     }
 
-    // Getters & Setters
     public Long getId() {
         return id;
     }
