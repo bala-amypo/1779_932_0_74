@@ -11,14 +11,15 @@ public class StudentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message="empty")
+    @NotBlank(message="Name is empty")
     private String name;
-    @NotBlank(message="empty")
+    @NotBlank(message="Email is empty")
     @Email(message="Invalid Email Format")
     private String email;
+    @Size(Min=6,Max=10,message="The minimum value has to be 6")
     private float cgpa;
 
-    public StudentEntity(Long id,@NotBlank(message="name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="email is empty") String email, float cgpa) {
+    public StudentEntity(Long id,@NotBlank(message="Name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="Email is empty") String email,@Size(Min=6,Max=10,message="The minimum value has to be 6") float cgpa) {
         this.name = name;
         this.email = email;
         this.cgpa = cgpa;
