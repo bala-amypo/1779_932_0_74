@@ -6,53 +6,78 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 
-
 @Entity
 public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message="Name is empty")
-    private String name;
-    @NotBlank(message="Email is empty")
-    @Email(message="Invalid Email Format")
-    private String email;
-    @Size(min=0,max=60,message="The minimum value has to be 0")
-    private int age;
-    //@Min(value=8,message="The password has to be long")same for max
 
-    public StudentEntity(Long id,@NotBlank(message="Name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="Email is empty") String email,@Size(Min=6,Max=10,message="The minimum value has to be 6") int age) {
+    @NotBlank(message = "Name is empty")
+    private String name;
+
+    @NotBlank(message = "Email is empty")
+    @Email(message = "Invalid Email Format")
+    private String email;
+
+    @Min(value = 0, message = "Age cannot be less than 0")
+    @Max(value = 60, message = "Age cannot be greater than 60")
+    private int age;
+
+    @NotBlank(message = "Password is empty")
+    @Size(min = 8, max = 16, message = "Password must be between 8 and 16 characters")
+    private String password;
+
+    // Default constructor (required by JPA)
+    public StudentEntity() {
+    }
+
+    // Parameterized constructor (NO validation annotations here)
+    public StudentEntity(String name, String email, int age, String password) {
         this.name = name;
         this.email = email;
         this.age = age;
+        this.password = password;
     }
 
-    public StudentEntity() {
-        
+    // Getters & Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return this.name;
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getEmail() {
-        return this.email;
+    public int getAge() {
+        return age;
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public float getAge() {
-        return this.age;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
