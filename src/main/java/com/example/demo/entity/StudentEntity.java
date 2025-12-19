@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
+
 
 @Entity
 public class StudentEntity {
@@ -16,14 +18,14 @@ public class StudentEntity {
     @NotBlank(message="Email is empty")
     @Email(message="Invalid Email Format")
     private String email;
-    @Size(min=0,max=10,message="The minimum value has to be 0")
-    private float cgpa;
+    @Size(min=0,max=60,message="The minimum value has to be 0")
+    private int age;
     //@Min(value=8,message="The password has to be long")same for max
 
-    public StudentEntity(Long id,@NotBlank(message="Name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="Email is empty") String email,@Size(Min=6,Max=10,message="The minimum value has to be 6") float cgpa) {
+    public StudentEntity(Long id,@NotBlank(message="Name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="Email is empty") String email,@Size(Min=6,Max=10,message="The minimum value has to be 6") int age) {
         this.name = name;
         this.email = email;
-        this.cgpa = cgpa;
+        this.age = age;
     }
 
     public StudentEntity() {
@@ -46,11 +48,11 @@ public class StudentEntity {
         return this.email;
     }
 
-    public void setCgpa(float cgpa) {
-        this.cgpa = cgpa;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public float getCgpa() {
-        return this.cgpa;
+    public float getAge() {
+        return this.age;
     }
 }
