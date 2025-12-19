@@ -18,7 +18,7 @@ public class StudentEntity {
     private String email;
     private float cgpa;
 
-    public StudentEntity(Long id,String name, String email, float cgpa) {
+    public StudentEntity(Long id,@NotBlank(message="name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="email is empty") String email, float cgpa) {
         this.name = name;
         this.email = email;
         this.cgpa = cgpa;
