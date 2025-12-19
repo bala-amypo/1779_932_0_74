@@ -16,8 +16,9 @@ public class StudentEntity {
     @NotBlank(message="Email is empty")
     @Email(message="Invalid Email Format")
     private String email;
-    @Size(Min=6,Max=10,message="The minimum value has to be 6")
+    @Size(min=0,max=10,message="The minimum value has to be 0")
     private float cgpa;
+    //@Min(value=8,message="The password has to be long")same for max
 
     public StudentEntity(Long id,@NotBlank(message="Name is empty") String name,@Email(message="Invalid Email Format"),@NotBlank(message="Email is empty") String email,@Size(Min=6,Max=10,message="The minimum value has to be 6") float cgpa) {
         this.name = name;
