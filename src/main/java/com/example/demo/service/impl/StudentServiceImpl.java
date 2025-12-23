@@ -17,7 +17,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentEntity addStudents(StudentEntity student) {
-        return repo.save(student);
+        repo.save(student);
+        if(student.getName().equals("abcd"))
+            throw new ResourceNotFoundException("Error Messgae....");
+        return student;
+
     }
 
     @Override
