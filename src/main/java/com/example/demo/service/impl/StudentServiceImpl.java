@@ -34,9 +34,4 @@ public class StudentServiceImpl implements StudentService {
         return repo.findById(id).orElse(null);
     }
 
-    @Override
-    public void deleteStudentById(Long id) {
-        repo.deleteById(id);
-    }
-
 }

@@ -12,12 +12,7 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "Name cannot be empty")
     private String name;
-
-    @NotBlank(message = "Email cannot be empty")
-    @Email(message = "Invalid email format")
     private String email;
 
     public Long getId() {
